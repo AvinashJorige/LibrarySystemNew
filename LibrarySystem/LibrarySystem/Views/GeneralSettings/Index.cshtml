@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewData["Title"] = "General Settings";
+}
+<breadcrumb></breadcrumb>
+
+@section Scripts {
+    <script src="https://cdn.ckeditor.com/4.10.0/standard-all/ckeditor.js"></script>
+    <script src='https://cdn.jsdelivr.net/jquery.cloudinary/1.0.18/jquery.cloudinary.js' type='text/javascript'></script>
+    <script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var uploadImgCloudinary = (preview, triggered) => {
+            var imgPreview = preview || "";
+            var imgPreviewTriggered = triggered || "";
+
+            openCloudinaryWidget(cloudinaryConfig, imgPreview, imgPreviewTriggered);
+        }
+
+        $(document).ready(() => {
+            CKEDITOR.replace('institute_terms_conditions', {
+                fullPage: true,
+                extraPlugins: 'docprops',
+                // Disable content filtering because if you use full page mode, you probably
+                // want to  freely enter any HTML content in source mode without any limitations.
+                allowedContent: true,
+                height: 320
+            });
+        });
+
+    </script>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-horizontal institute_general_setting" name="institute_general_setting">
+            <div class="tile">
+                <h3 class="tile-title">General Settings</h3>
+                <div class="tile-body">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group row">
+                                <label class="control-label col-lg-3 col-md-12">Institute Name</label>
+                                <div class="col-lg-8 col-md-12">
+                                    <input class="form-control institute_name" type="text" name="institute_name" data-required="true" data-required-message="Enter Institute Name.">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="control-label col-lg-3 col-md-12">Institute Address</label>
+                                <div class="col-lg-8 col-md-12">
+                                    <input class="form-control institute_address" type="text" name="institute_address" data-required="true" data-required-message="Enter Institute Address.">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="control-label col-lg-3 col-md-12">Institute Email</label>
+                                <div class="col-lg-8 col-md-12">
+                                    <input class="form-control institute_email" type="email" name="institute_email" data-required="true" data-required-message="Enter Institute Email.">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-lg-3 col-md-12">Institute Phone / Mobile</label>
+                                <div class="col-lg-8 col-md-12">
+                                    <input class="form-control institute_phone" type="text" name="institute_phone" data-required="true" data-required-message="Enter Institute Phone / Mobile.">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-lg-3 col-md-12">Currency</label>
+                                <div class="col-lg-8 col-md-12">
+                                    <select class="form-control institute_currency_type" id="currencyType" name="institute_currency_type" data-required="true" data-required-message="Enter Institute Currency.">
+                                        <option value="null">-- Select --</option>
+                                        <option value="GBP">£ GBP</option>
+                                        <option value="EUR">€ EUR</option>
+                                        <option value="USD">$ USD</option>
+                                        <option value="INR">₹ INR</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label for="uploadLogo">Logo</label>
+                                <div class="preview-logo-display hidden">
+                                    <img src="https://www.w3schools.com/bootstrap/sanfran.jpg" class="img-thumbnail" id="img-logo-preview" />
+                                </div>
+                                <div class="default-logo-upload">
+                                    <a class="btn btn-warning form-control-file" id="uploadLogo" href="javascript:uploadImgCloudinary('preview-logo-display', 'default-logo-upload')">Upload here</a><small class="form-text text-muted" id="instituteLogoHelp">Click on the upload here link and upload the image</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="uploadFavicon">Favicon</label>
+                                <div class="preview-favicon-display hidden">
+                                    <img src="https://www.w3schools.com/bootstrap/sanfran.jpg" class="img-thumbnail" id="img-favicon-preview" />
+                                </div>
+                                <div class="default-favicon-upload">
+                                    <a class="btn btn-warning form-control-file" id="faviconLogo" href="javascript:uploadImgCloudinary('preview-favicon-display', 'default-favicon-upload')">Upload here</a><small class="form-text text-muted" id="instituteLogoHelp">Click on the upload here link and upload the image</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <label class="control-label col-lg-2 col-md-12">Terms and Conditions</label>
+                                <div class="col-lg-10 col-md-12">
+                                    <textarea class="form-control institute_terms_conditions" rows="4" style="margin-top: 0px; margin-bottom: 0px; height: 105px;" name="institute_terms_conditions" id="institute_terms_conditions" data-required="true" data-required-message="Enter Terms and Conditions."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile-footer">
+                    <div class="row">
+                        <div class="col-md-8 col-offset-3">
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Register</button>&nbsp;&nbsp;&nbsp;<button type="reset" class="btn btn-secondary"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

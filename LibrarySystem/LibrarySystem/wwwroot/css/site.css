@@ -1,0 +1,13 @@
+﻿.preview-logo-display .img-thumbnail, .preview-favicon-display .img-thumbnail {
+    padding: 15px 40%;
+}
+
+.hidden{
+    display:none;
+}
+
+.error {
+    color: red;
+    font-weight: 600;
+    font-style: italic;
+}
